@@ -18,7 +18,7 @@ These dotfiles are collected and adapted from many other's to allow me to be as 
 - Contrasting colors in terminal
   - `.bash_prompt`- configures all colors in the terminal
   - `.gitconfig`- configures git colors 
-- Aliases- for commonly used commands. For example instead of typing `..` moves the cwd up one while `...` moves up three.
+- Aliases- for commonly used commands. For example instead of typing `..` moves the cwd up one while `...` moves up two.
 
 # Usage
 I don't expect anyone to copy every dotfile and place it into their machine but I do encourage others to pick and choose the configuration they like. I've tried my best to document what each configuration does.
