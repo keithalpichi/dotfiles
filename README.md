@@ -7,10 +7,14 @@
 # About
 These dotfiles are collected and adapted from many other's to allow me to be as efficient and minimal as I can but still fit my coding style.
 
+<img width="366" alt="screen shot 2017-08-11 at 11 38 19 am" src="https://user-images.githubusercontent.com/14797743/29227172-ac175460-7e89-11e7-8288-d42211906e61.png">
+
 <img width="495" alt="screen shot 2017-08-11 at 11 32 51 am" src="https://user-images.githubusercontent.com/14797743/29226988-f11c07e6-7e88-11e7-9199-88eb0d8797ad.png">
 
 # What is included
-- Vim configuration- My `.vimrc` contains all my keymappings, snippets, color customizations, and more
+- Vim configuration-
+  - `.vimrc` contains all my keymappings, snippets, and more
+  - `.vim/` contains all configuration including the color customizations you see above
 - Contrasting colors in terminal
   - `.bash_prompt`- configures all colors in the terminal
   - `.gitconfig`- configures git colors 
