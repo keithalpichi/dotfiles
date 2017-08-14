@@ -22,7 +22,11 @@ set background=dark
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (START)
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'                       " Language highlight support
+Plug 'lifepillar/vim-mucomplete'                  " Autocomplete
 call plug#end()
+let g:mucomplete#enable_auto_at_startup = 1
+set completeopt+=menuone
+set completeopt+=noselect
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
 " ----------------------------------------------- OTHER (START)
 set nocompatible
