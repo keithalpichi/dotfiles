@@ -80,13 +80,35 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" File Browsing
+" File Browsing with Netrw
 let g:netrw_banner=0                              " disable annoying banner
 let g:netrw_browse_split=4                        " open in prior window
 let g:netrw_altv=1                                " open splits to the right
 let g:netrw_liststyle=3                           " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_winsize = 25                          " set default window size
+
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+	if exists("t:expl_buf_num")
+		let expl_win_num = bufwinnr(t:expl_buf_num)
+		if expl_win_num != -1
+			let cur_win_nr = winnr()
+			exec expl_win_num . 'wincmd w'
+			close
+			exec cur_win_nr . 'wincmd w'
+			unlet t:expl_buf_num
+		else
+			unlet t:expl_buf_num
+		endif
+	else
+		exec '1wincmd w'
+		Vexplore
+		let t:expl_buf_num = bufnr("%")
+	endif
+endfunction
+map <silent> <C-e> :call ToggleVExplorer()<CR>
 " ----------------------------------------------- WINDOWS & FILE BROWSING (END)
 
 " Don't create backups or swap files
