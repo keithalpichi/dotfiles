@@ -5,7 +5,7 @@
 
 
 # About
-These dotfiles are collected and adapted from many other's to allow me to be as efficient and minimal as I can but still fit my coding style.
+These dotfiles are collected and adapted from many other's to allow me to be as efficient and minimal as I can but still fit my coding style. I've avoided using large popular plugins that slowed bootup time.
 
 <img width="366" alt="screen shot 2017-08-11 at 11 38 19 am" src="https://user-images.githubusercontent.com/14797743/29227172-ac175460-7e89-11e7-8288-d42211906e61.png">
 
@@ -13,7 +13,7 @@ These dotfiles are collected and adapted from many other's to allow me to be as 
 
 # What is included
 - Vim configuration-
-  - `.vimrc` contains all my keymappings, snippets, and more
+  - `.vimrc` contains all my core plugins, keymappings, snippets, and more
   - `.vim/` contains all configuration including the color customizations you see above
 - Contrasting colors in terminal
   - `.bash_prompt`- configures all colors in the terminal
