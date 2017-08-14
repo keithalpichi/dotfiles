@@ -24,9 +24,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'                       " Language highlight support
 Plug 'lifepillar/vim-mucomplete'                  " Autocomplete
 call plug#end()
-let g:mucomplete#enable_auto_at_startup = 1
-set completeopt+=menuone
-set completeopt+=noselect
+let g:mucomplete#enable_auto_at_startup = 1       " Autocomplete- Auto start plugin on startup
+set completeopt+=menuone                          " Autocomplete- Menu
+set completeopt+=noinsert                         " Autocomplete- Enter autocomplete prompt on 'enter'
+set shortmess+=c   																" Autocomplete- Shut off completion messages
+set belloff+=ctrlg 																" Autocomplete- Remove beeping during completion
+" Autocomplete- Ctrl-e to exit Autocomplete
+inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
+" Autocomplete- Return to complete and exit Autocomplete
+inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
 " ----------------------------------------------- OTHER (START)
 set nocompatible
