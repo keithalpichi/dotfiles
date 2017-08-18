@@ -86,8 +86,8 @@ set splitright
 set winwidth=45
 set winheight=30                                  " Set current window height to 30 lines
 set winminheight=5                                " Set minimum height of all windows at 5 lines
-nnoremap <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <Leader>- :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <Leader>= :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " Not sure what this does?
 " nnoremap <C-n> <c-w><
