@@ -39,7 +39,7 @@ set nocompatible
 set clipboard=unnamed                             " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set wildmenu                                      " Enhance command-line completion
 set esckeys                                       " Allow cursor keys in insert mode
-" set backspace=indent,eol,start                  " Allow backspace in insert mode
+set backspace=indent,eol,start                    " Format backspace in insert mode
 set ttyfast                                       " Optimize for fast terminal connections
 set gdefault                                      " Add the g flag to search/replace by default
 set encoding=utf-8 nobomb                         " Use UTF-8 without BOM
@@ -60,10 +60,14 @@ nnoremap <leader>w :w<cr>
 nnoremap<leader>w1 :w!<cr>
 " Save file and quit
 nnoremap <leader>wq :wq<cr>
-" Quit
+" Quit file
 nnoremap <leader>q :q<cr>
+" Quit all buffers
+nnoremap <leader>qa :qa<cr>
 " Force quit
 nnoremap <leader>q1 :q!<cr>
+" Force quit all buffers
+nnoremap <leader>qa1 :qa!<cr>
 
 " Caution me to use the correct maps
 nnoremap <Left> :echoe "Use h"<CR>
@@ -79,6 +83,11 @@ set noeol
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+set winwidth=45
+set winheight=30                                  " Set current window height to 30 lines
+set winminheight=5                                " Set minimum height of all windows at 5 lines
+nnoremap <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Not sure what this does?
 " nnoremap <C-n> <c-w><
@@ -98,6 +107,7 @@ let g:netrw_liststyle=3                           " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_winsize = 25                          " set default window size
+let g:netrw_preview = 1                           " Preview window in vertical split
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -136,6 +146,9 @@ set secure
 set number
 " Highlight current line
 set cursorline
+" Auto indent
+set autoindent
+set smartindent
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
