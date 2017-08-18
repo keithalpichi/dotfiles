@@ -57,7 +57,7 @@ nnoremap ^ :echoe "Use E"<CR>
 " Save file
 nnoremap <leader>w :w<cr>
 " Force save
-nnoremap<leader>w1 :w!<cr>
+nnoremap <leader>w1 :w!<cr>
 " Save file and quit
 nnoremap <leader>wq :wq<cr>
 " Quit file
@@ -88,16 +88,18 @@ set winheight=30                                  " Set current window height to
 set winminheight=5                                " Set minimum height of all windows at 5 lines
 nnoremap <Leader>= :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+" Set window to full height and width
+" nnoremap <Leader>\ <C-W>|
 
 " Not sure what this does?
 " nnoremap <C-n> <c-w><
 " nnoremap <C-m> <c-w>>
 
 " Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>l <C-w>l
 
 " File Browsing with Netrw
 let g:netrw_banner=0                              " disable annoying banner
