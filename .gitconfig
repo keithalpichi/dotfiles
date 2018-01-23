@@ -4,10 +4,12 @@
   name = Your Name
   email = yourname@email.com
 [alias]
+	pu = push
   co = checkout
 	cob = checkout -b
   br = branch
-  ci = commit -m
+  cm = commit -m
+	ca = commit --amend
   st = status
   tags = tag -l
   branches = branch -a
