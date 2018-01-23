@@ -1,7 +1,7 @@
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (START)
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+" If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -21,8 +21,11 @@ set background=dark
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (END)
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (START)
 call plug#begin('~/.vim/plugged')
-Plug 'sheerun/vim-polyglot'                       " Language highlight support
+Plug 'sheerun/vim-polyglot'                       " Language support
 Plug 'lifepillar/vim-mucomplete'                  " Autocomplete
+Plug 'fatih/vim-go'                               " Go specific
+Plug 'vim-airline/vim-airline'                    " Custom statusline
+Plug 'vim-airline/vim-airline-themes'             " Custom statusline theme
 call plug#end()
 let g:mucomplete#enable_auto_at_startup = 1       " Autocomplete- Auto start plugin on startup
 set completeopt+=menuone                          " Autocomplete- Menu
@@ -33,7 +36,25 @@ set belloff+=ctrlg 																" Autocomplete- Remove beeping during complet
 inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
 " Autocomplete- Return to complete and exit Autocomplete
 inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+
+" Vim Airline config
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '▶'
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='deus'
+
+" Vim Go config
+set autowrite                                     " Write file after successful Go build
+let g:go_list_type = "quickfix"                   " Use quickfix for errors
+let g:go_fmt_command = "goimports"                " Use goimports instead of gofmt
+" let g:go_highlight_types = 1
+let g:go_highlight_fields = 1                     " Highlight types
+" Set packages for metalinter
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1                  " run metalinter on save
+let g:go_auto_type_info = 1                       " Show type info on cursor hover
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
+
 " ----------------------------------------------- OTHER (START)
 set nocompatible
 set clipboard=unnamed                             " Use the OS clipboard by default (on versions compiled with `+clipboard`)
