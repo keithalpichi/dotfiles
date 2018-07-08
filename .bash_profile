@@ -36,3 +36,21 @@ export PATH="$PATH:/usr/local/bin/elixir"
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/Developer/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# Create functions to add/remove bookmarks of directories to quickly cd into (as documented at http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html)
+export MARKPATH=$HOME/.marks
+# jump to symbolically linked directory under "marked" name
+function jump {
+	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+# mark $1 arg as symbolic name to use for "jump"
+function mark {
+	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark {
+	rm -i "$MARKPATH/$1"
+}
+function marks {
+	\ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
