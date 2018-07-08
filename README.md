@@ -24,3 +24,9 @@ These dotfiles are collected and adapted from many other's to allow me to be as 
 I don't expect anyone to copy every dotfile and place it into their machine but I do encourage others to pick and choose the configuration they like. I've tried my best to document what each configuration does.
 
 Go through each file, try a snippet of configuration, and see if you like it. If not remove it otherwise keep it.
+
+
+# Other Resources
+- The [Hack font](https://sourcefoundry.org/hack/)
+- To version control your collection of dotfiles (like this repo) follow the instructions in this [article](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)  - I placed this bare .git directory in my $HOME path under `.dotconfig`
+  - I aliased the git command to `.conf` ("dot conf for short")
