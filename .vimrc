@@ -1,32 +1,23 @@
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (START)
-" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-" If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-syntax on
-colorscheme onedark
 set background=dark
+syntax on
+colorscheme neodark
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (END)
 " ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (START)
 call plug#begin('~/.vim/plugged')
+Plug 'thaerkh/vim-indentguides'                   " Vertical indent guides
+Plug 'tpope/vim-commentary'                       " Comment shortcuts
 Plug 'sheerun/vim-polyglot'                       " Language support
 Plug 'lifepillar/vim-mucomplete'                  " Autocomplete
 Plug 'fatih/vim-go'                               " Go specific
 Plug 'vim-airline/vim-airline'                    " Custom statusline
 Plug 'vim-airline/vim-airline-themes'             " Custom statusline theme
+Plug 'airblade/vim-gitgutter'                     " Show git diffs in gutter
+Plug 'vim-syntastic/syntastic'                    " Syntax checker
+Plug 'KeitaNakamura/neodark.vim'                  " Colorscheme - neodark
+Plug 'hzchirs/vim-material'                       " Colorscheme - vim-material
 call plug#end()
+
 let g:mucomplete#enable_auto_at_startup = 1       " Autocomplete- Auto start plugin on startup
 set completeopt+=menuone                          " Autocomplete- Menu
 set completeopt+=noinsert                         " Autocomplete- Enter autocomplete prompt on 'enter'
@@ -53,7 +44,18 @@ let g:go_highlight_fields = 1                     " Highlight types
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1                  " run metalinter on save
 let g:go_auto_type_info = 1                       " Show type info on cursor hover
-" ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
+
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['golint']
+" ---------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
 
 " ----------------------------------------------- OTHER (START)
 set nocompatible
