@@ -6,7 +6,6 @@ alias .conf='/usr/bin/git --git-dir=$HOME/.dotconfig/ --work-tree=$HOME'
 alias cp='cp -iv'                                 # Preferred 'cp' implementation
 alias mv='mv -iv'                                 # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                           # Preferred 'mkdir' implementation
-alias rm='rm -i'                                  # Confirm deletion before removal
 # ----------------------------------------------- EDITING & MOVEMENT (END)
 # ----------------------------------------------- NAVIGATION (START)
 alias ..="cd .."
