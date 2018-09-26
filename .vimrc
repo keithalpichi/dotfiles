@@ -1,7 +1,6 @@
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (START)
 filetype plugin on
-"set background=dark
-"set t_Co=256
+set background=dark
 syntax on
 colorscheme onedark
 call plug#begin('~/.vim/plugged')
@@ -118,10 +117,6 @@ nnoremap <Leader>= :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " Set window to full height and width
 " nnoremap <Leader>\ <C-W>|
-
-" Not sure what this does?
-" nnoremap <C-n> <c-w><
-" nnoremap <C-m> <c-w>>
 
 " Quicker window movement
 nnoremap <Leader>j <C-w>j
