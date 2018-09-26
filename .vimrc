@@ -1,12 +1,12 @@
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (START)
-set background=dark
+filetype plugin on
+"set background=dark
+"set t_Co=256
 syntax on
-colorscheme neodark
-" ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (END)
-" ----------------------------------------------- VIM-PLUG PLUGIN MANAGER (START)
+colorscheme onedark
 call plug#begin('~/.vim/plugged')
-Plug 'thaerkh/vim-indentguides'                   " Vertical indent guides
-Plug 'tpope/vim-commentary'                       " Comment shortcuts
+Plug 'nathanaelkane/vim-indent-guides'                   " Vertical indent guides
+Plug 'scrooloose/nerdcommenter'                   " Comment shortcuts (ie, comment/uncomment line with `<leader>cc` & `<leader>cu`)
 Plug 'sheerun/vim-polyglot'                       " Language support
 Plug 'lifepillar/vim-mucomplete'                  " Autocomplete
 Plug 'fatih/vim-go'                               " Go specific
@@ -14,25 +14,44 @@ Plug 'vim-airline/vim-airline'                    " Custom statusline
 Plug 'vim-airline/vim-airline-themes'             " Custom statusline theme
 Plug 'airblade/vim-gitgutter'                     " Show git diffs in gutter
 Plug 'vim-syntastic/syntastic'                    " Syntax checker
-Plug 'KeitaNakamura/neodark.vim'                  " Colorscheme - neodark
-Plug 'hzchirs/vim-material'                       " Colorscheme - vim-material
+Plug 'mattn/emmet-vim'                            " HTML toolkit
+
+" Plug Themes
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'KeitaNakamura/neodark.vim'
 call plug#end()
 
+" Plugin- vim-indent-guides: Indent guides enable on startup
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Plugin- mucomplete
 let g:mucomplete#enable_auto_at_startup = 1       " Autocomplete- Auto start plugin on startup
 set completeopt+=menuone                          " Autocomplete- Menu
 set completeopt+=noinsert                         " Autocomplete- Enter autocomplete prompt on 'enter'
-set shortmess+=c   																" Autocomplete- Shut off completion messages
-set belloff+=ctrlg 																" Autocomplete- Remove beeping during completion
+set shortmess+=c   								" Autocomplete- Shut off completion messages
+set belloff+=ctrlg 								" Autocomplete- Remove beeping during completion
 " Autocomplete- Ctrl-e to exit Autocomplete
 inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
 " Autocomplete- Return to complete and exit Autocomplete
 inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
 
-" Vim Airline config
+" Plugin- vim airline: config
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = '▶'
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_theme='deus'
+
+" Plugin- Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['golint']
+let g:syntastic_js_checkers = ['eslint']
 
 " Vim Go config
 set autowrite                                     " Write file after successful Go build
@@ -45,19 +64,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1                  " run metalinter on save
 let g:go_auto_type_info = 1                       " Show type info on cursor hover
 
-" Syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_go_checkers = ['golint']
-" ---------------------------------------------- VIM-PLUG PLUGIN MANAGER (END)
-
-" ----------------------------------------------- OTHER (START)
 set nocompatible
 set clipboard=unnamed                             " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set wildmenu                                      " Enhance command-line completion
@@ -66,8 +73,7 @@ set backspace=indent,eol,start                    " Format backspace in insert m
 set ttyfast                                       " Optimize for fast terminal connections
 set gdefault                                      " Add the g flag to search/replace by default
 set encoding=utf-8 nobomb                         " Use UTF-8 without BOM
-" ----------------------------------------------- OTHER (START)
-" ----------------------------------------------- CUSTOM MAPPINGS (START)
+
 let mapleader="\<space>"                          " Set mapleader to spacebar
 " Return to Normal mode with 'jk'
 inoremap jk <esc>
@@ -101,8 +107,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
-" ----------------------------------------------- CUSTOM MAPPINGS (START)
-" ----------------------------------------------- WINDOWS & FILE BROWSING (START)
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -154,7 +159,7 @@ function! ToggleVExplorer()
 	endif
 endfunction
 map <silent> <C-e> :call ToggleVExplorer()<CR>
-" ----------------------------------------------- WINDOWS & FILE BROWSING (END)
+
 
 " Don't create backups or swap files
 set nobackup
@@ -177,7 +182,7 @@ set smartindent
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set listchars=tab:\ \ ,eol:↲,nbsp:␣,trail:•
 set list
 " Highlight searches
 set hlsearch
@@ -220,20 +225,3 @@ function! StripWhitespace()
     call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
-
-" Automatic commands
-if has("autocmd")
-    " Enable file type detection
-    filetype on
-    " Treat .json files as .js
-    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-    " Treat .md files as Markdown
-    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-endif
-
-" ----------------------------------------------- SNIPPETS (START)
-" Read an empty HTML template and move cursor to title
-nnoremap ,html :-1read $HOME/.vim/snippets/skeleton.html<CR>4jwf>a
-" ----------------------------------------------- SNIPPETS (END)
