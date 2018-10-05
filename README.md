@@ -7,9 +7,9 @@
 # About
 These dotfiles are collected and adapted from many other's to allow me to be as efficient and minimal as I can but still fit my coding style. I've avoided using large popular plugins that slowed bootup time.
 
-<img width="366" alt="screen shot 2017-08-11 at 11 38 19 am" src="https://user-images.githubusercontent.com/14797743/29227172-ac175460-7e89-11e7-8288-d42211906e61.png">
+<img width="366" alt="vim color scheme" src="https://user-images.githubusercontent.com/14797743/29227172-ac175460-7e89-11e7-8288-d42211906e61.png">
 
-<img width="495" alt="screen shot 2017-08-11 at 11 32 51 am" src="https://user-images.githubusercontent.com/14797743/29226988-f11c07e6-7e88-11e7-9199-88eb0d8797ad.png">
+<img width="495" alt="bash prompt" src="https://user-images.githubusercontent.com/14797743/46518600-e706d880-c829-11e8-8fd6-a0320f0dac9c.png">
 
 # What is included
 - Vim configuration-
