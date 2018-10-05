@@ -1,5 +1,5 @@
 " ----------------------------------------------- SYNTAX HIGHLIGHTING & COLORS (START)
-filetype plugin on
+set t_Co=256
 set background=dark
 syntax on
 colorscheme onedark
