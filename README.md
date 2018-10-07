@@ -25,6 +25,14 @@ I don't expect anyone to copy every dotfile and place it into their machine but 
 
 Go through each file, try a snippet of configuration, and see if you like it. If not remove it otherwise keep it.
 
+# Terminal Setup
+- iTerm2
+- [`atom`](https://github.com/mbadolato/iTerm2-Color-Schemes#atom) color scheme
+  - custom background color- #292C33
+- [bash prompt config](https://github.com/keithalpichi/dotfiles/blob/master/.bash_prompt)
+- [Hack 12pt font](https://sourcefoundry.org/hack/)
+- "One" vim color scheme from "rakr/vim-one"
+
 
 # Other Resources
 - The [Hack font](https://sourcefoundry.org/hack/)
