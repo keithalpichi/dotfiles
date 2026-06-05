@@ -1,0 +1,6 @@
+theme = dark:Atom One Dark,light:Atom One Light
+font-family = Hack
+font-size = 16
+working-directory = ~/Code
+background-opacity = 0.90
+background-blur-radius = 20
