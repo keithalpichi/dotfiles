@@ -1,14 +1,36 @@
 # dotfiles
 
-A collection of my MacOS dotfiles and other tools
+A collection of my MacOS dotfiles and other tools stored in a git repo at `~/.dotconfig`.
 
 
 ## Tools
 
+- [zsh](https://www.zsh.org/)- z shell
+- [ohmyzsh](https://ohmyz.sh/)- z shell configuration manager
 - [vim](https://www.vim.org/)- Terminal text editor
-- [iTerm2](https://iterm2.com)- Terminal
+- [ghostty](https://ghostty.org/)- Terminal emulator
 - [Hack](https://sourcefoundry.org/hack/)- OS font
 - [VSCode](https://code.visualstudio.com/)- Source code editor
 - [Homebrew](https://brew.sh/)- OS Package Manager
 - [Docker](https://www.docker.com/)- Container management and orchestration platform
-- [k3d](https://k3d.io)- k3d makes it very easy to create single- and multi-node k3s clusters in docker, e.g. for local development on Kubernetes.
+
+## Setup
+
+
+```
+git init --bare $HOME/.conf
+alias config='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+echo "alias .conf='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME'" >> $HOME/.zshrc
+```
+
+## Usage
+
+Use git commands to add/update/remove files from the bare git repo but instead of using `git`, use `.conf`. So:
+
+```
+.conf add $FILE
+.conf rm $FILE
+.conf commit -m "Updated dotfiles"
+.conf push
+```
