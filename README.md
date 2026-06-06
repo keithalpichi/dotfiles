@@ -18,11 +18,13 @@ A collection of my MacOS dotfiles and other tools stored in a git repo at `~/.do
 
 
 ```
-git init --bare $HOME/.conf
-alias config='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME'
-config config --local status.showUntrackedFiles no
-echo "alias .conf='/usr/bin/git --git-dir=$HOME/.conf/ --work-tree=$HOME'" >> $HOME/.zshrc
+git init --bare $HOME/.dotconfig
+alias .conf='/usr/bin/git --git-dir=$HOME/.gotconfig/ --work-tree=$HOME'
+.conf config --local status.showUntrackedFiles no
+echo "alias .conf='/usr/bin/git --git-dir=$HOME/.dotconfig/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
+
+A new bare git repo will live in `$HOME/.dotconfig` and a git alias `.conf` will point to it.
 
 ## Usage
 
