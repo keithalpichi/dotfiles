@@ -19,7 +19,7 @@ A collection of my MacOS dotfiles and other tools stored in a git repo at `~/.do
 
 ```
 git init --bare $HOME/.dotconfig
-alias .conf='/usr/bin/git --git-dir=$HOME/.gotconfig/ --work-tree=$HOME'
+alias .conf='/usr/bin/git --git-dir=$HOME/.dotconfig/ --work-tree=$HOME'
 .conf config --local status.showUntrackedFiles no
 echo "alias .conf='/usr/bin/git --git-dir=$HOME/.dotconfig/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
